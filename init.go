@@ -8,7 +8,7 @@ import (
 // Init will initialise a new Git repository at the current location. The
 // location be set using Go's Chdir method.
 func (g *GotClient) Init() error {
-	g.ChangeDir()
+	g.changeDirToPath()
 
 	cmd := exec.Command("git", "init")
 	out, err := cmd.CombinedOutput()
@@ -16,7 +16,7 @@ func (g *GotClient) Init() error {
 		fmt.Println(string(out))
 	}
 
-	g.RestoreDir()
+	g.restorePath()
 
 	return err
 }

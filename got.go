@@ -21,7 +21,7 @@ func IsGitInstalled() bool {
 	}
 }
 
-func NewGitClient(path string) *GotClient {
+func NewGotClient(path string) *GotClient {
 	return &GotClient{
 		Verbose: false,
 		Path:    path,
@@ -32,7 +32,7 @@ var (
 	workDir string
 )
 
-func (g *GotClient) ChangeDir() {
+func (g *GotClient) changeDirToPath() {
 	wd, err := os.Getwd()
 	if err != nil {
 		panic(err)
@@ -44,7 +44,7 @@ func (g *GotClient) ChangeDir() {
 	}
 }
 
-func (g *GotClient) RestoreDir() {
+func (g *GotClient) restorePath() {
 	if err := os.Chdir(workDir); err != nil {
 		panic(err)
 	}
