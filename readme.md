@@ -14,7 +14,7 @@ $ go get github.com/morcmarc/got
 
 [![GoDoc](https://godoc.org/github.com/morcmarc/got?status.svg)](https://godoc.org/github.com/morcmarc/got)
 
-##Supported Command (Work in Progress)
+##Supported Commands (Work in Progress)
 
 - init
 - clone
