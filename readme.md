@@ -10,6 +10,10 @@ Simple git utility functions.
 $ go get github.com/morcmarc/got
 ```
 
+##Documentation
+
+[![GoDoc](https://godoc.org/github.com/morcmarc/got?status.svg)](https://godoc.org/github.com/morcmarc/got)
+
 ##Supported Command (Work in Progress)
 
 - init
