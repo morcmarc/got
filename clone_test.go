@@ -1,6 +1,7 @@
 package got
 
 import (
+	"os/exec"
 	"testing"
 )
 
@@ -23,4 +24,12 @@ func TestCloneWithValidUrl(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Wasn't expecting error %s", err)
 	}
+
+	cmd := exec.Command("git", "status")
+	err = cmd.Run()
+	if err != nil {
+		t.Fatalf("Was expecting a git repo got error %s", err)
+	}
+
+	defer teardown()
 }

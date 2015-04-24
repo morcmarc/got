@@ -5,8 +5,8 @@ import (
 	"os/exec"
 )
 
-// Init will initialise a new Git repository at the current location. The
-// location be set using Go's Chdir method.
+// Init will try to initialise a new Git repository at GotClient.Path. Returns
+// an error if there was any.
 func (g *GotClient) Init() error {
 	g.changeDirToPath()
 

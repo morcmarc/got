@@ -7,10 +7,12 @@ import (
 )
 
 type GotClient struct {
-	Path    string
-	Verbose bool
+	Path    string // Path to the repository
+	Verbose bool   // Verbose output flag
 }
 
+// IsGitInstalled will run `git --version` to determine whether Git is installed
+// on the target system and return true or false.
 func IsGitInstalled() bool {
 	cmd := exec.Command("git", "--version")
 	_, err := cmd.CombinedOutput()
@@ -21,6 +23,7 @@ func IsGitInstalled() bool {
 	}
 }
 
+// NewGotClient returns a instance of GotClient initialised for the given path.
 func NewGotClient(path string) *GotClient {
 	return &GotClient{
 		Verbose: false,
