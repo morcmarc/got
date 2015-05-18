@@ -6,8 +6,8 @@ import (
 )
 
 func TestInit(t *testing.T) {
-	setup()
-	defer teardown()
+	gc, path := setup()
+	defer teardown(path)
 
 	err := gc.Init()
 	if err != nil {

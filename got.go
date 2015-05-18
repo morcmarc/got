@@ -6,7 +6,13 @@ import (
 	"os/exec"
 )
 
+type Interface interface {
+	Clone(uri string) error
+	Init() error
+}
+
 type GotClient struct {
+	Interface
 	Path    string // Path to the repository
 	Verbose bool   // Verbose output flag
 }

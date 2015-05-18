@@ -6,26 +6,21 @@ import (
 	"testing"
 )
 
-var (
-	path string
-	gc   *GotClient
-)
-
-func setup() {
+func setup() (*GotClient, string) {
 	wd, err := os.Getwd()
 	if err != nil {
 		panic(err)
 	}
 
-	path, err = ioutil.TempDir(wd, "gottest")
+	path, err := ioutil.TempDir(wd, "gottest")
 	if err != nil {
 		panic(err)
 	}
 
-	gc = NewGotClient(path)
+	return NewGotClient(path), path
 }
 
-func teardown() {
+func teardown(path string) {
 	err := os.RemoveAll(path)
 	if err != nil {
 		panic(err)
@@ -33,8 +28,8 @@ func teardown() {
 }
 
 func TestChangeDirToPath(t *testing.T) {
-	setup()
-	defer teardown()
+	gc, path := setup()
+	defer teardown(path)
 
 	owd, err := os.Getwd()
 	if err != nil {
