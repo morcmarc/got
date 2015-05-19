@@ -6,11 +6,17 @@ import (
 	"os/exec"
 )
 
+// Interface wraps all public functions in this library.
 type Interface interface {
 	Clone(uri string) error
 	Init() error
+	SetRemote(name, uri string) error
+	GetRemote(name string) (string, error)
+	AddRemote(name, uri string) error
 }
 
+// GotClient implements all functions in Interface. It is bounded to a specific
+// directory.
 type GotClient struct {
 	Interface
 	Path    string // Path to the repository
@@ -18,7 +24,7 @@ type GotClient struct {
 }
 
 // IsGitInstalled will run `git --version` to determine whether Git is installed
-// on the target system and return true or false.
+// on the target system.
 func IsGitInstalled() bool {
 	cmd := exec.Command("git", "--version")
 	_, err := cmd.CombinedOutput()

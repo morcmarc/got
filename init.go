@@ -5,8 +5,7 @@ import (
 	"os/exec"
 )
 
-// Init will try to initialise a new Git repository at GotClient.Path. Returns
-// an error if there was any.
+// Init will try to initialise a new Git repository at GotClient.Path.
 func (g *GotClient) Init() error {
 	g.changeDirToPath()
 
